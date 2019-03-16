@@ -102,3 +102,9 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# React webpack
+build
+dist
+node_modules
+.idea

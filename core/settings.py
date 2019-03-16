@@ -40,6 +40,7 @@ DJANGO_APPS = [
 
 INTERNAL_APPS = [
     'leads',
+    'frontend',
 ]
 
 EXTERNAL_APPS = [
