@@ -4,6 +4,8 @@
   "description": "Django Rest & React application",
   "main": "index.js",
   "scripts": {
+    "flush": "pipenv run python ./manage.py flush --no-input",
+    "e2e": "cypress open --project ./",
     "dev": "webpack --mode development ./frontend/src/index.js --output ./frontend/static/frontend/main.js",
     "build": "webpack --mode production ./frontend/src/index.js --output ./frontend/static/frontend/main.js"
   },
@@ -24,6 +26,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "cypress": "^3.2.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
