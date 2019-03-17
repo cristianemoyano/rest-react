@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import DataProvider from "./DataProvider";
-import Table from "./Table";
 import Form from "./Form";
 
 
@@ -9,7 +8,6 @@ const App = () => (
     <React.Fragment>
         <DataProvider
             endpoint="api/leads/"
-            render={data => <Table data={data} />}
         />
         <Form endpoint="api/leads/" />
     </React.Fragment>
