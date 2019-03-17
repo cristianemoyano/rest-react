@@ -14,7 +14,7 @@ class DataProvider extends Component {
         placeholder: "Loading..."
     };
 
-    componentDidMount() {
+    componentDidUpdate() {
         fetch(this.props.endpoint)
             .then(response => {
                 if (response.status !== 200) {

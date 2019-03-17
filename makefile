@@ -43,3 +43,6 @@ cypress-test:
 
 activate:
 	../../ && source bin/activate && cd app/rest-react
+
+flush:
+	python ./manage.py flush --no-input
