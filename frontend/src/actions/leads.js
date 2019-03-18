@@ -1,12 +1,15 @@
 import {
   updateLead as updateLeadApi,
   fetchLead as fetchLeadApi,
+  deleteLead as deleteLeadApi,
 } from '../api/leads';
 
 export const UPDATE_LEAD_SUCCESS = 'UPDATE_LEAD_SUCCESS';
 export const UPDATE_LEAD_FAILED = 'UPDATE_LEAD_FAILED';
 export const FETCH_LEAD_SUCCESS = 'FETCH_LEAD_SUCCESS';
 export const FETCH_LEAD_FAILED = 'FETCH_LEAD_FAILED';
+export const DELETE_LEAD_SUCCESS = 'DELETE_LEAD_SUCCESS';
+export const DELETE_LEAD_FAILED = 'DELETE_LEAD_FAILED';
 
 
 // UPDATE LEAD ACTION
@@ -55,4 +58,29 @@ export const fetchLead = () => (dispatch) => {
     return fetchLeadApi().then(
         (result) => dispatch(fetchLeadSuccess(result))
     ).catch((err) => dispatch(fetchLeadFailed(err)));
+};
+
+
+// DELETE LEAD ACTION
+const deleteLeadActionSuccess = (leadDeleteResults) => (
+    {type: DELETE_LEAD_SUCCESS, payload: leadDeleteResults}
+);
+const deleteLeadActionFailed = (err) => ({type: DELETE_LEAD_FAILED, payload: err});
+
+
+
+const deleteLeadSuccess = (leadDeleteResults) => (dispatch) => {
+    dispatch(deleteLeadActionSuccess(leadDeleteResults));
+    dispatch(fetchLead());
+};
+
+const deleteLeadFailed = (err) => (dispatch) => {
+    dispatch(deleteLeadActionFailed(err));
+};
+
+
+export const deleteLead = (leadId, params) => (dispatch) => {
+    return deleteLeadApi(leadId, params).then(
+        (result) => dispatch(deleteLeadSuccess(result))
+    ).catch((err) => dispatch(deleteLeadFailed(err)));
 };

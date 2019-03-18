@@ -35,7 +35,7 @@ shell:
 loaddata:
 	python manage.py loaddata leads
 
-webpack:
+dev:
 	npm run dev
 
 cypress-test:

@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 
 import DataProvider from '../components/DataProvider';
 import {
-    fetchLead
+    fetchLead,
 } from '../actions/leads';
 
 

@@ -10,10 +10,8 @@ export default class AdminLeadsPage extends PureComponent {
         return (
             <React.Fragment>
               <ConnectedDataProvider
-                  endpoint="api/leads/"
                   {...this.props}
               />
-              <ConnectedForm endpoint="api/leads/" />
             </React.Fragment>
         );
     }
