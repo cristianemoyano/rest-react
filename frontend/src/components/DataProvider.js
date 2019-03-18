@@ -1,27 +1,7 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import DataTable from 'react-data-table-component';
-
-const columns = [
-  {
-    name: 'Name',
-    selector: 'name',
-    sortable: true,
-  },
-  {
-    name: 'Email',
-    selector: 'email',
-    sortable: true,
-  },
-    {
-    name: 'Message',
-    selector: 'message',
-  },
-    {
-    name: 'Created',
-    selector: 'created_at',
-  },
-];
+import { leadsColumns } from '../common/constants'
 
 const TableHeader = ({loaded, length}) => {
     if (loaded) {
@@ -53,8 +33,8 @@ const Layout = ({data, loaded, placeholder }) => {
                     length={data.length}
                 />
                 <DataTable
-                    title="Messages"
-                    columns={columns}
+                    title="Message"
+                    columns={leadsColumns}
                     data={data}
                     onRowClicked={handleChange}
                 />
@@ -80,34 +60,22 @@ class DataProvider extends Component {
         placeholder: "Loading..."
     };
 
-    componentDidMount() {
-        fetch(this.props.endpoint)
-            .then(response => {
-                if (response.status !== 200) {
-                    return this.setState({ placeholder: "Something went wrong" });
-                }
-                return response.json();
-            })
-        .then(data => this.setState({ data: data, loaded: true }));
+    _fetchElements = () => {
+        this.props.fetchAllLeads();
     }
 
-    componentDidUpdate() {
-        fetch(this.props.endpoint)
-            .then(response => {
-                if (response.status !== 200) {
-                    return this.setState({ placeholder: "Something went wrong" });
-                }
-                return response.json();
-            })
-        .then(data => this.setState({ data: data, loaded: true }));
+    componentDidMount() {
+        this._fetchElements();
     }
 
     render() {
         const { data, loaded, placeholder } = this.state;
+        const { leadsItems } = this.props;
+
         return (
             <Layout
-                data={data}
-                loaded={loaded}
+                data={leadsItems}
+                loaded={true}
                 placeholder={placeholder}
             />
         );

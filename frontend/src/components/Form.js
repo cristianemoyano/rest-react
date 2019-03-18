@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { updateLead } from '../actions/leads'
 
 
 class Form extends Component {
     static propTypes = {
-        endpoint: PropTypes.string.isRequired
+        endpoint: PropTypes.string.isRequired,
+        onSubmit: PropTypes.func.isRequired,
     };
 
     state = {
@@ -20,19 +22,19 @@ class Form extends Component {
         e.preventDefault();
         const { name, email, message } = this.state;
         const lead = { name, email, message };
-        const conf = {
+        const params = {
             method: "post",
             body: JSON.stringify(lead),
             headers: new Headers({ "Content-Type": "application/json" })
         };
-        fetch(this.props.endpoint, conf).then(response => console.log(response));
+        this.props.onSubmit(params);
     };
 
     render() {
         const { name, email, message } = this.state;
         return (
           <div className="column">
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit.bind(this)}>
               <div className="field">
                 <label className="label">Name</label>
                 <div className="control">
