@@ -19,8 +19,8 @@ export default class AdminLeads extends React.Component {
 
     render() {
         return (
-            <Provider store={this._store}>
-                <ConnectedPage {...this.props} />
+            <Provider store={this._store} >
+                <ConnectedPage {...this} />
             </Provider>
         );
     }

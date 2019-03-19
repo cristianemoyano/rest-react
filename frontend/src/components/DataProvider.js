@@ -23,6 +23,7 @@ class DataProvider extends Component {
                 data={leadsItems}
                 placeholder={LEAD_ITEMS_DEFAULT}
                 title={LEAD_ITEMS_TITLE}
+                {...this}
             />
         );
     }

@@ -7,6 +7,8 @@ import {
     FETCH_LEAD_SUCCESS as FETCH_LEAD_SUCCESS_ACTION,
     DELETE_LEAD_FAILED as DELETE_LEAD_FAILED_ACTION,
     DELETE_LEAD_SUCCESS as DELETE_LEAD_SUCCESS_ACTION,
+    SHOW_NOTIFICATION as SHOW_NOTIFICATION_ACTION,
+    HIDE_NOTIFICATION as HIDE_NOTIFICATION_ACTION,
 } from '../actions/leads';
 
 
@@ -49,10 +51,21 @@ const deleteSuccess = (state = {}, {type, payload}) => {
     return newState;
 };
 
+const notification = (state = { show: false }, {type, payload}) => {
+    let newState = state;
+
+    if (type === SHOW_NOTIFICATION_ACTION || type === HIDE_NOTIFICATION_ACTION) {
+        newState = payload;
+    }
+
+    return newState;
+};
+
 
 
 export default combineReducers({
     updateSuccess,
     leadsItems,
     deleteSuccess,
+    notification,
 });

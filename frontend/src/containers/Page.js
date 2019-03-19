@@ -10,7 +10,7 @@ export default class AdminLeadsPage extends PureComponent {
         return (
             <React.Fragment>
               <ConnectedDataProvider
-                  {...this.props}
+                  {...this}
               />
             </React.Fragment>
         );

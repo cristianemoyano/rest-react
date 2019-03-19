@@ -6,8 +6,9 @@ import {
 } from '../actions/leads';
 
 
-const _mapStateToProps = ({deleteSuccess}) => ({
+const _mapStateToProps = ({deleteSuccess, notification}) => ({
     deleteSuccess,
+    notification,
 });
 const _mapDispatchToProps = (dispatch) => ({
     onClick: (leadId, params) => dispatch(deleteLead(leadId, params)),
